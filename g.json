@@ -622,5 +622,11 @@
     "id": "greedymimic",
     "flash": false,
     "img": "./img/games/greedy-mimic.png"
+  },
+  {
+    "name": "Hasty Shaman",
+    "id": "hasty-shaman",
+    "flash": false,
+    "img": "./img/games/hasty-shaman.png"
   }
 ]
