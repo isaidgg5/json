@@ -578,7 +578,7 @@
     "name": "Undertale",
     "id": "undertale",
     "flash": false,
-    "img": ""
+    "img": "./img/games/undertale.webp"
   },
   {
     "name": "Undertale Yellow",
