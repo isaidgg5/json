@@ -1,10 +1,48 @@
 import json
 import os
 import subprocess
+import copy
 
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QPalette, QColor
 from PyQt5.QtCore import Qt
+
+
+DARK_STYLE = """
+QWidget {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+}
+QListWidget, QLineEdit, QTextEdit, QPlainTextEdit {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+QListWidget::item:selected {
+    background-color: #4a6a9b;
+}
+QPushButton {
+    background-color: #3c3c3c;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    padding: 4px 12px;
+}
+QPushButton:hover {
+    background-color: #4a4a4a;
+}
+QPushButton:pressed {
+    background-color: #555;
+}
+QCheckBox {
+    color: #e0e0e0;
+}
+QGroupBox {
+    border: 1px solid #555;
+    margin-top: 6px;
+}
+"""
+
+LIGHT_STYLE = ""
 
 
 class GamesEditor(QWidget):
@@ -12,6 +50,7 @@ class GamesEditor(QWidget):
         super().__init__()
 
         self.json_path = "g.json"
+        self.dark_mode = False
 
         with open(self.json_path, "r", encoding="utf8") as f:
             self.games = json.load(f)
@@ -69,13 +108,24 @@ class GamesEditor(QWidget):
         add = QPushButton("Add Game")
         add.clicked.connect(self.add_game)
 
+        dup = QPushButton("Duplicate Game")
+        dup.clicked.connect(self.duplicate_game)
+
         delete = QPushButton("Delete Game")
         delete.clicked.connect(self.delete_game)
 
-        right.addWidget(add)
-        right.addWidget(delete)
+        self.dark_toggle = QPushButton("Toggle Dark Mode")
+        self.dark_toggle.clicked.connect(self.toggle_dark)
+
+        btn_row = QHBoxLayout()
+        btn_row.addWidget(add)
+        btn_row.addWidget(dup)
+        btn_row.addWidget(delete)
+
+        right.addLayout(btn_row)
         right.addWidget(save)
         right.addWidget(push)
+        right.addWidget(self.dark_toggle)
 
         layout.addLayout(right, 2)
 
@@ -175,6 +225,20 @@ class GamesEditor(QWidget):
         self.refresh_list()
         self.listbox.setCurrentRow(len(self.games) - 1)
 
+    def duplicate_game(self):
+        i = self.listbox.currentRow()
+
+        if i < 0:
+            return
+
+        self.save_current()
+        dupe = copy.deepcopy(self.games[i])
+        dupe["name"] += " (copy)"
+        self.games.insert(i + 1, dupe)
+
+        self.refresh_list()
+        self.listbox.setCurrentRow(i + 1)
+
     def delete_game(self):
         i = self.listbox.currentRow()
 
@@ -182,6 +246,10 @@ class GamesEditor(QWidget):
             del self.games[i]
 
         self.refresh_list()
+
+    def toggle_dark(self):
+        self.dark_mode = not self.dark_mode
+        qApp.setStyleSheet(DARK_STYLE if self.dark_mode else LIGHT_STYLE)
 
     def pick_image(self):
         file, _ = QFileDialog.getOpenFileName(
