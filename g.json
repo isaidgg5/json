@@ -666,6 +666,12 @@
     "img": "./img/games/super-choppy-orc.png"
   },
   {
+    "name": "Jellybots",
+    "id": "jellybots",
+    "flash": false,
+    "img": "./img/games/jelly-bots.png"
+  },
+  {
     "name": "Dozenbear",
     "id": "dozenbear",
     "flash": false,
