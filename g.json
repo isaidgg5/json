@@ -636,6 +636,12 @@
     "img": "./img/games/choppy-orc.png"
   },
   {
+    "name": "Sleepy Knight",
+    "id": "sleepy-knight",
+    "flash": false,
+    "img": "./img/games/sleepy-knight.png"
+  },
+  {
     "name": "Super Choppy Orc",
     "id": "super-choppy-orc",
     "flash": false,
