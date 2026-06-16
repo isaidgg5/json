@@ -642,9 +642,33 @@
     "img": "./img/games/sleepy-knight.png"
   },
   {
+    "name": "Sticky Sorcerer",
+    "id": "sticky-sorcerer",
+    "flash": false,
+    "img": "./img/games/sticky-sorcerer.png"
+  },
+  {
+    "name": "Orcs Vs Elves",
+    "id": "orcs-vs-elves",
+    "flash": false,
+    "img": "./img/games/orcs-vs-elves.png"
+  },
+  {
+    "name": "One Trick Mage",
+    "id": "onetrickmage",
+    "flash": false,
+    "img": "./img/games/one-trick-mage.png"
+  },
+  {
     "name": "Super Choppy Orc",
     "id": "super-choppy-orc",
     "flash": false,
     "img": "./img/games/super-choppy-orc.png"
+  },
+  {
+    "name": "Dozenbear",
+    "id": "dozenbear",
+    "flash": false,
+    "img": "./img/games/dozen-bear.png"
   }
 ]
