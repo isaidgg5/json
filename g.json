@@ -628,5 +628,17 @@
     "id": "hasty-shaman",
     "flash": false,
     "img": "./img/games/hasty-shaman.png"
+  },
+  {
+    "name": "Choppy Orc",
+    "id": "choppyorc",
+    "flash": false,
+    "img": "./img/games/choppy-orc.png"
+  },
+  {
+    "name": "Super Choppy Orc",
+    "id": "super-choppy-orc",
+    "flash": false,
+    "img": "./img/games/super-choppy-orc.png"
   }
 ]
